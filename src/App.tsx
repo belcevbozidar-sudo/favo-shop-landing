@@ -808,21 +808,6 @@ export default function App() {
                 <span className="text-xs font-semibold text-zinc-700 tracking-wide">30+ години качество • Основано през 1993 г.</span>
               </div>
 
-              {/* Mobile Horizontal Marquee (Visible only on Mobile) */}
-              <div className="lg:hidden w-full relative overflow-hidden py-4 mt-2 pointer-events-none">
-                {/* Fade Gradients for horizontal scrolling */}
-                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent z-10" />
-                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent z-10" />
-
-                <div className="flex gap-4 animate-marquee-horizontal w-max">
-                  {[...marqueeImages, ...marqueeImages, ...marqueeImages].map((img, index) => (
-                    <div key={`mobile-marquee-${index}`} className="w-36 h-24 bg-white rounded-2xl overflow-hidden shadow-sm shrink-0 border border-zinc-200/50 p-1">
-                      <img src={img} alt="Mobile Woodcraft" className="w-full h-full object-cover rounded-xl" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Heading */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-zinc-950 leading-[1.1]">
                 Лидер в производството на дървени изделия и маси
@@ -842,6 +827,21 @@ export default function App() {
                     <span className="text-base text-zinc-700 font-medium">{feat.text}</span>
                   </div>
                 ))}
+              </div>
+
+              {/* Mobile Horizontal Marquee (Visible only on Mobile) */}
+              <div className="lg:hidden w-full relative overflow-hidden py-4 mt-4 pointer-events-none">
+                {/* Fade Gradients for horizontal scrolling */}
+                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent z-10" />
+                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent z-10" />
+
+                <div className="flex gap-4 animate-marquee-horizontal w-max">
+                  {[...marqueeImages, ...marqueeImages, ...marqueeImages].map((img, index) => (
+                    <div key={`mobile-marquee-${index}`} className="w-36 h-24 bg-white rounded-2xl overflow-hidden shadow-sm shrink-0 border border-zinc-200/50 p-1">
+                      <img src={img} alt="Mobile Woodcraft" className="w-full h-full object-cover rounded-xl" />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Divider */}
