@@ -742,7 +742,8 @@ export default function App() {
       {/* 1. Sticky Navbar */}
       <nav className="sticky top-0 z-50 bg-gray-50/90 backdrop-blur-md border-b border-zinc-200/80 px-6 py-4 flex items-center justify-between transition-all duration-300">
         {/* Left Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => { setActiveProduct(null); window.scrollTo(0, 0); }}>
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setActiveProduct(null); window.scrollTo(0, 0); }}>
+          <img src="/images/favo_logo.png" alt="FAVO Logo" className="h-10 w-10 object-contain rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.06)]" />
           <span className="text-xl font-bold tracking-tight text-zinc-950">FAVO-SHOP</span>
         </div>
 
@@ -859,6 +860,21 @@ export default function App() {
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </div>
               </a>
+
+              {/* Mobile Horizontal Marquee (Visible only on Mobile) */}
+              <div className="lg:hidden w-full relative overflow-hidden py-4 mt-4 pointer-events-none">
+                {/* Fade Gradients for horizontal scrolling */}
+                <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent z-10" />
+                <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent z-10" />
+
+                <div className="flex gap-4 animate-marquee-horizontal w-max">
+                  {[...marqueeImages, ...marqueeImages, ...marqueeImages].map((img, index) => (
+                    <div key={`mobile-marquee-${index}`} className="w-36 h-24 bg-white rounded-2xl overflow-hidden shadow-sm shrink-0 border border-zinc-200/50 p-1">
+                      <img src={img} alt="Mobile Woodcraft" className="w-full h-full object-cover rounded-xl" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Right Column: Scrolling Marquees (Hidden on Mobile) */}
@@ -922,7 +938,11 @@ export default function App() {
                   handle: "eternal-calendar"
                 }
               ].map((prod, idx) => (
-                <div key={idx} className="group bg-white rounded-3xl p-6 border border-zinc-200/40 shadow-premium transition-all duration-300 hover:shadow-xl flex flex-col justify-between">
+                <div
+                  key={idx}
+                  onClick={() => { setActiveProduct(prod.handle); setQuantity(1); window.scrollTo(0, 0); }}
+                  className="group bg-white rounded-3xl p-6 border border-zinc-200/40 shadow-premium transition-all duration-300 hover:shadow-xl flex flex-col justify-between cursor-pointer"
+                >
                   <div>
                     <div className="w-full aspect-square rounded-2xl overflow-hidden bg-zinc-50 border border-zinc-100 shadow-sm">
                       <img src={prod.img} alt={prod.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -934,7 +954,7 @@ export default function App() {
                   </div>
 
                   <div className="mt-6">
-                    <GradientButton fullWidth onClick={() => { setActiveProduct(prod.handle); setQuantity(1); window.scrollTo(0, 0); }}>
+                    <GradientButton fullWidth>
                       Преглед на Продукта
                     </GradientButton>
                   </div>
@@ -1275,7 +1295,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Contact and Details */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <span className="text-2xl font-bold tracking-tight text-white">FAVO-SHOP</span>
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setActiveProduct(null); window.scrollTo(0, 0); }}>
+              <img src="/images/favo_logo.png" alt="FAVO Logo" className="h-12 w-12 object-contain bg-white rounded-full p-1" />
+              <span className="text-2xl font-bold tracking-tight text-white">FAVO-SHOP</span>
+            </div>
             <p className="text-zinc-400 text-sm font-medium leading-relaxed max-w-sm">
               Най-големият производител в Европа на сгъваеми дървени и алуминиеви маси.
             </p>
